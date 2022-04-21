@@ -1,11 +1,14 @@
 import {View, Text, ScrollView} from 'react-native';
 import React, {useContext, useEffect, useState, Component} from 'react';
-import ListItem from '../ListItem';
+import ListItem from '../ListItem/ListItem';
 import axios from 'axios';
 import SeacrhBar from '../SearchBar/SeacrhBar';
-
+import {useSelector,useDispatch} from 'react-redux'
+import {setUsers} from '../redux/action'
 const ListComponent = () => {
-  const [users, setUsers] = useState([]);
+  const {users} = useSelector(state => state.userReducer)
+  const dispatch = useDispatch()
+  //const [users, setUsers] = useState([]);
   const [SearchItem, setSearchItem] = useState('');
   const [searchedUser, setsearchedUser] = useState();
   useEffect(() => {
@@ -14,7 +17,8 @@ const ListComponent = () => {
       .then(function (response) {
         // handle success
         console.log(response.data);
-        setUsers(response.data);
+        //setUsers(response.data);
+        dispatch(setUsers(response.data))
       })
       .catch(function (error) {
         // handle error

@@ -7,8 +7,7 @@ import {
   ImageBackground,
   Linking,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/dist/FontAwesome';
-import CustomModal from './Modal/CustomModal';
+import CustomModal from '../Modal/CustomModal';
 
 function ListItem({userObj}) {
   const [modalVisible, setModalVisible] = useState(false);
